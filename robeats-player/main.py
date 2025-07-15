@@ -24,8 +24,19 @@ def main():
         path += ".osu"
 
     if not os.path.exists(path):
+        print(f"File '{path}' not found.")
+        print(f"Searching for file path 'maps/{path}' instead...")
+        path = "maps/"+ path
+
+    if not os.path.exists(path):
+        print(f"File '{path}' not found.")
+        print(f"Searching for file path 'maps/map.osu' instead...")
+        path = "maps/map.osu"
+
+    if not os.path.exists(path):
         print("File not found. Using default.osu instead.")
         path = "default.osu"
+    else: print("File found")
 
     print("Loading map...")
     osu_map = read(path)
